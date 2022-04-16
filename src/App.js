@@ -28,8 +28,8 @@ function App() {
   const updateCalc = value => {
 
     if(
-      ops.includes(value) && calc === '' ||
-      ops.includes(value) && ops.includes(calc.slice(-1))
+      (ops.includes(value) && calc === '') ||
+      (ops.includes(value) && ops.includes(calc.slice(-1)))
     ) {
       return;
     }
@@ -40,16 +40,16 @@ function App() {
   }
 
   const deleteLast = () => {
-    if(calc == '') return;
+    if(calc === '') return;
     const value = calc.slice(0, -1);
 
     setCalc(value);
   }
 
   const deleteAll = () => {
-    if(calc == '') return;
+    if(calc === '') return;
 
-    setCalc('');
+    setCalc(''); setDisable(false);
   }
 
   const createDigitsButton= () => {
