@@ -64,7 +64,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div data-testid="app" className="App">
       <div className='calculator'>
         <div className='display'>
           {calc || "0"}
