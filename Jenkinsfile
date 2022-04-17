@@ -22,5 +22,17 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
+        stage('Ansible') {
+            steps{
+                ansiblePlaybook(
+                    credentialsId: "container_access_key",
+                    inventory: "Inventory",
+                    installation: "ansible",
+                    limit: "",
+                    playbook: "playbook.yaml",
+                    extras: ""
+                )
+            }
+        }
     }
 }

@@ -1,0 +1,47 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - python3-pip
+          - node
+          - python3-setuptools
+        state: latest
+        update_cache: true
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+    - name: Pull calculator docker image
+      community.docker.docker_image:
+        name: pantprakhar/spe-mini-project
+        source: pull
+
+    - name: Launch the calculator container
+      docker_container:
+        name: scientific_calculator
+        image: pantprakhar/spe-mini-project
+        state: started
+        ports:
+        -  8000:3000

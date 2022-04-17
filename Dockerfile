@@ -1,5 +1,7 @@
 # pull the official base image
 FROM node:16.14.2
+LABEL "Author"="Prakhar Pant"
+LABEL "Project"="Scientific Calculator"
 # set working direction
 WORKDIR /app
 # add `/app/node_modules/.bin` to $PATH

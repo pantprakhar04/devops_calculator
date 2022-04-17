@@ -1,0 +1,7 @@
+React_App ansible_host=54.202.219.129
+
+[servers_group]
+React_App
+
+[servers_group:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
