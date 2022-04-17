@@ -11,10 +11,18 @@ function App() {
   }
 
   const naturalLog = () => {
+    if(calc === "0"){
+      alert("Please enter a number greater than zero!");
+      setCalc(''); return;
+    }
     setCalc(Math.log(calc));
   }
 
   const factorial = () => {
+    if(calc > '170'){
+      alert('Enter a smaller number');
+      setCalc(''); return;
+    }
     let fact = 1;
     for(let i=2; i<=calc; ++i) fact *= i;
     setCalc(fact);
