@@ -1,4 +1,4 @@
-React_App ansible_host=34.216.243.15
+React_App ansible_host=54.149.134.121
 
 [servers_group]
 React_App
